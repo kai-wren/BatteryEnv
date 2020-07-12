@@ -4,19 +4,19 @@ import matplotlib.pyplot as plt
 import gym
 from gym import spaces
 
-df = pd.read_csv('data.csv')
+df = pd.read_csv('./data.csv')
 df.rename({'cet_cest_timestamp':'time','SE_load_actual_tso':'load'},axis='columns',inplace=True)
 df['time'] = pd.to_datetime(df['time'],errors='ignore', utc=True)
 df['weekday'] = df['time'].dt.weekday
 
-class BatteryEnv(gym.Env):
+class BatteryEnv:#(gym.Env):
     """Battery optimization environment for OpenAI gym"""
-    metadata = {'render.modes': ['human']}
+    #metadata = {'render.modes': ['human']}
     # dataframe is inscribed into environment
 
     
     def __init__(self, reward_func):
-        super(BatteryEnv, self).__init__()
+        #super(BatteryEnv, self).__init__()
         
         self.dict_actions = {0:'discharge',1:'charge',2:'wait'}
         self.df = df
@@ -26,7 +26,7 @@ class BatteryEnv(gym.Env):
         self.action_space = spaces.Discrete(3)
         
         # our observation space is just one float value - our load 
-        self.observation_space = spaces.Box(low=self.df['load'].min(), high=self.df['load'].max(), dtype=np.float16)
+        #self.observation_space = spaces.Box(low=self.df['load'].min(), high=self.df['load'].max(), dtype=np.float16)
         
         # reward function submitted by the researcher
         self.reward_func = reward_func
