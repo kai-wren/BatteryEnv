@@ -3,8 +3,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import gym
 from gym import spaces
+import os
 
-df = pd.read_csv('/content/src/batteryenv4gym/batteryenv4gym/envs/data.csv')
+current_file = os.path.abspath(os.path.dirname(__file__))
+csv_filename = os.path.join(current_file, '/data/data.csv')
+
+#df = pd.read_csv('/content/src/batteryenv4gym/batteryenv4gym/envs/data.csv')
+df = pd.read_csv(current_file)
 df.rename({'cet_cest_timestamp':'time','SE_load_actual_tso':'load'},axis='columns',inplace=True)
 df['time'] = pd.to_datetime(df['time'],errors='ignore', utc=True)
 df['weekday'] = df['time'].dt.weekday
