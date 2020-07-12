@@ -9,14 +9,14 @@ df.rename({'cet_cest_timestamp':'time','SE_load_actual_tso':'load'},axis='column
 df['time'] = pd.to_datetime(df['time'],errors='ignore', utc=True)
 df['weekday'] = df['time'].dt.weekday
 
-class BatteryEnv:#(gym.Env):
+class BatteryEnv(gym.Env):
     """Battery optimization environment for OpenAI gym"""
-    #metadata = {'render.modes': ['human']}
+    metadata = {'render.modes': ['human']}
     # dataframe is inscribed into environment
 
     
     def __init__(self, reward_func):
-        #super(BatteryEnv, self).__init__()
+        super(BatteryEnv, self).__init__()
         
         self.dict_actions = {0:'discharge',1:'charge',2:'wait'}
         self.df = df
