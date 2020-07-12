@@ -25,6 +25,7 @@ jobs:
     # Runs a set of tests
     - name: Run tests
       run: |
+        pip install numpy
         cd batteryenv4gym
         cd envs
         python -m unittest -v reward_test
