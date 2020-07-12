@@ -1,7 +1,7 @@
 from setuptools import setup
 
-setup(name='BatteryEnv',
+setup(name='gym_BatteryEnv',
       version='0.0.1',
-      install_requires=['gym', 'numpy', 'pandas', 'matplotlib']  # And any other dependencies foo needs
+      install_requires=['gym', 'numpy', 'pandas', 'matplotlib']  # And any other dependencies needs
 )
 
