@@ -9,7 +9,7 @@ import sys
 csv_filename = (os.path.abspath(os.path.dirname(sys.argv[0])) + "\data\data.csv")
 
 #df = pd.read_csv('/content/src/batteryenv4gym/batteryenv4gym/envs/data.csv')
-df = pd.read_csv(csv_filename)
+df = pd.read_csv("./data/data.csv")
 df.rename({'cet_cest_timestamp':'time','SE_load_actual_tso':'load'},axis='columns',inplace=True)
 df['time'] = pd.to_datetime(df['time'],errors='ignore', utc=True)
 df['weekday'] = df['time'].dt.weekday
