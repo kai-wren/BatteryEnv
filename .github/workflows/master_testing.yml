@@ -25,10 +25,9 @@ jobs:
     # Runs a set of tests
     - name: Run tests
       run: |
-        ls
-        echo cd
+        pip install numpy
+        pip install pandas
+        pip install matplotlib
         cd batteryenv4gym
-        ls
-        echo cd
-        cd test
+        cd envs
         python -m unittest -v reward_test
