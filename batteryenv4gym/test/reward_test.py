@@ -1,5 +1,5 @@
 import unittest
-from src.batteryenv4gym.batteryenv4gym.envs.battery_env import BatteryEnv
+from batteryenv4gym.envs.battery_env import BatteryEnv
 
 def reward_equationMAX(actual_load_list):
     return max(actual_load_list)
