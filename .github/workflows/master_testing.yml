@@ -25,6 +25,10 @@ jobs:
     # Runs a set of tests
     - name: Run tests
       run: |
+        ls
+        echo cd
         cd batteryenv4gym
+        ls
+        echo cd
         cd test
         python -m unittest -v reward_test
