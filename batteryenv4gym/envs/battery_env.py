@@ -8,7 +8,7 @@ class BatteryEnv(gym.Env):
     """Battery optimization environment for OpenAI gym"""
     metadata = {'render.modes': ['human']}
     
-    def __init__(self, calculate_reward_func, df):
+    def __init__(self, reward_func, df):
         super(BatteryEnv, self).__init__()
         
         self.dict_actions = {0:'discharge',1:'charge',2:'wait'}
@@ -21,8 +21,8 @@ class BatteryEnv(gym.Env):
         # our observation space is just one float value - our load 
         self.observation_space = spaces.Box(low=self.df['load'].min(), high=self.df['load'].max(), dtype=np.float16)
         
-        # custom function to calculate reward
-        self.calculate_reward_func = calculate_reward_func 
+        # reward function submitted by the user and be 
+        self.reward_func = reward_func
         
         # reward list for monitoring
         self.reward_list = []
@@ -32,6 +32,13 @@ class BatteryEnv(gym.Env):
         
         # index of current state within current episode
         self.state_idx = 0
+    
+    def calculate_reward_func(self,reward_func):
+        """
+        helper higher-order function to contain reward function 
+        submitted by researcher
+        """
+        return reward_func
                 
     
     def step(self, action): 
@@ -59,7 +66,7 @@ class BatteryEnv(gym.Env):
         self.actual_load_list.append(obs)
         
         # calculate reward from actual signal via inputted custom function
-        reward = self.calculate_reward_func(obs,actual_load_list=self.actual_load_list) 
+        reward = self.calculate_reward_func(self.reward_func(self.actual_load_list)) 
         
         # appending curr reward to list for monitoring and comparison purposes
         self.reward_list.append(reward) 
