@@ -26,7 +26,7 @@ class BatteryEnv(gym.Env):
         # our observation space is just one float value - our load 
         self.observation_space = spaces.Box(low=self.df['load'].min(), high=self.df['load'].max(), dtype=np.float16)
         
-        # reward function submitted by the user and be 
+        # reward function submitted by the researcher
         self.reward_func = reward_func
         
         # reward list for monitoring
@@ -37,15 +37,7 @@ class BatteryEnv(gym.Env):
         
         # index of current state within current episode
         self.state_idx = 0
-    
-    def calculate_reward_func(self,reward_func):
-        """
-        helper higher-order function to contain reward function 
-        submitted by researcher
-        """
-        return reward_func
-                
-    
+       
     def step(self, action): 
         """
         Method to execute one action within the environment 
@@ -71,7 +63,7 @@ class BatteryEnv(gym.Env):
         self.actual_load_list.append(obs)
         
         # calculate reward from actual signal via inputted custom function
-        reward = self.calculate_reward_func(self.reward_func(self.actual_load_list)) 
+        reward = self.reward_func(self.actual_load_list)
         
         # appending curr reward to list for monitoring and comparison purposes
         self.reward_list.append(reward) 
