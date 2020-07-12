@@ -4,12 +4,14 @@ import matplotlib.pyplot as plt
 import gym
 from gym import spaces
 import os
-import sys
 
-csv_filename = (os.path.abspath(os.path.dirname(sys.argv[0])) + "\data\data.csv")
+def find(name, path):
+    for root, dirs, files in os.walk(path):
+        if name in files:
+            return os.path.join(root, name)
 
 #df = pd.read_csv('/content/src/batteryenv4gym/batteryenv4gym/envs/data.csv')
-df = pd.read_csv("./data/data.csv")
+df = pd.read_csv(find('data.csv', './'))
 df.rename({'cet_cest_timestamp':'time','SE_load_actual_tso':'load'},axis='columns',inplace=True)
 df['time'] = pd.to_datetime(df['time'],errors='ignore', utc=True)
 df['weekday'] = df['time'].dt.weekday
