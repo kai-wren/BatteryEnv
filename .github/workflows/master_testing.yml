@@ -25,10 +25,8 @@ jobs:
     # Runs a set of tests
     - name: Run tests
       run: |
-        ls
         echo Install env
         python -m pip install -e git+https://github.com/kai-wren/BatteryEnv4Gym.git#egg=batteryenv4gym
-        ls
-    #    cd batteryenv4gym
-    #    cd test
-    #    python -m unittest -v reward_test
+        cd batteryenv4gym
+        cd test
+        python -m unittest -v reward_test
