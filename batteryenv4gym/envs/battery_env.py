@@ -8,7 +8,7 @@ class BatteryEnv(gym.Env):
     """Battery optimization environment for OpenAI gym"""
     metadata = {'render.modes': ['human']}
     # dataframe is inscribed into environment
-    df = pd.read_csv('Sweden Load Data 2005-2017.csv')
+    df = pd.read_csv('./Sweden Load Data 2005-2017.csv')
     df.rename({'cet_cest_timestamp':'time','SE_load_actual_tso':'load'},axis='columns',inplace=True)
     df['time'] = pd.to_datetime(df['time'],errors='ignore', utc=True)
     df['weekday'] = df['time'].dt.weekday
