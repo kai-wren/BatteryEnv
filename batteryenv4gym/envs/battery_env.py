@@ -13,7 +13,7 @@ class BatteryEnv(gym.Env):
     df['time'] = pd.to_datetime(df['time'],errors='ignore', utc=True)
     df['weekday'] = df['time'].dt.weekday
     
-    def __init__(self, reward_func, df):
+    def __init__(self, reward_func):
         super(BatteryEnv, self).__init__()
         
         self.dict_actions = {0:'discharge',1:'charge',2:'wait'}
