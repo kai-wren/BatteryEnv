@@ -7,6 +7,11 @@ from gym import spaces
 class BatteryEnv(gym.Env):
     """Battery optimization environment for OpenAI gym"""
     metadata = {'render.modes': ['human']}
+    # dataframe is inscribed into environment
+    df = pd.read_csv('Sweden Load Data 2005-2017.csv')
+    df.rename({'cet_cest_timestamp':'time','SE_load_actual_tso':'load'},axis='columns',inplace=True)
+    df['time'] = pd.to_datetime(df['time'],errors='ignore', utc=True)
+    df['weekday'] = df['time'].dt.weekday
     
     def __init__(self, reward_func, df):
         super(BatteryEnv, self).__init__()
@@ -85,6 +90,15 @@ class BatteryEnv(gym.Env):
         here we just return the first state of the next episode:
         """
         return self.df.iloc[self.state_idx,:]
+    
+    def restart_env(self):
+        """
+        here we reassign environment variables to default:
+        """
+        self.charge = 4
+        self.reward_list.clear()
+        self.actual_load_list.clear()
+        self.state_idx = 0
     
     
     def render(self, mode='human', close=False):
