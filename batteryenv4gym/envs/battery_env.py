@@ -26,7 +26,7 @@ class BatteryEnv:#(gym.Env):
         self.action_space = spaces.Discrete(3)
         
         # our observation space is just one float value - our load 
-        #self.observation_space = spaces.Box(low=self.df['load'].min(), high=self.df['load'].max(), dtype=np.float16)
+        self.observation_space = spaces.Box(low=self.df['load'].min(), high=self.df['load'].max(), dtype=np.float16)
         
         # reward function submitted by the researcher
         self.reward_func = reward_func
