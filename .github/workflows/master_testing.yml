@@ -27,6 +27,7 @@ jobs:
       run: |
         pip install numpy
         pip install pandas
+        pip install matplotlib
         cd batteryenv4gym
         cd envs
         python -m unittest -v reward_test
