@@ -19,10 +19,7 @@ def reward_equationCOND(actual_load_list):
     else:
         return actual_load_list[-1]
 
-class MyTest(unittest.TestCase):
-    def testEnvExist(self):
-        env = BatteryEnv(reward_func=reward_equationMAX)
-        self.assertIn(env.action_space.sample(), [0, 1, 2])
+class RewardTest(unittest.TestCase):
         
     def testMAX(self):
         env = BatteryEnv(reward_func=reward_equationMAX)
