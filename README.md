@@ -40,10 +40,10 @@ After this step you could execute below code to get environment created:
 import gym
 import batteryenv4gym
 
-def reward_equationMAX(actual_load_list):
+def reward_equation(actual_load_list):
     return max(actual_load_list)
     
-env = gym.make('batteryenv-v0', reward_func=reward_equationMAX)
+env = gym.make('batteryenv-v0', reward_func=reward_equation)
 ```
 
 ## Stochastic baseline agent
