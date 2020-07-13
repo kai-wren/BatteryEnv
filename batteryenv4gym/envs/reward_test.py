@@ -42,7 +42,7 @@ class MyTest(unittest.TestCase):
     def testLAST(self):
         env = BatteryEnv(reward_func=reward_equationLAST)
         lst = [1,2,3,3,10,-50]
-        self.assertEqual(env.reward_func(lst), -31)
+        self.assertEqual(env.reward_func(lst), -50)
         
     def testCOND(self):
         env = BatteryEnv(reward_func=reward_equationCOND)
