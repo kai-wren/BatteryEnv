@@ -20,7 +20,7 @@ def reward_equationCOND(actual_load_list):
         return actual_load_list[-1]
 
 class MyTest(unittest.TestCase):
-    def test(self):
+    def testEnvExist(self):
         env = BatteryEnv(reward_func=reward_equationMAX)
         self.assertIn(env.action_space.sample(), [0, 1, 2])
         
@@ -28,6 +28,26 @@ class MyTest(unittest.TestCase):
         env = BatteryEnv(reward_func=reward_equationMAX)
         lst = [1,2,3,3,10,-50]
         self.assertEqual(env.reward_func(lst), 10)
+        
+    def testMIN(self):
+        env = BatteryEnv(reward_func=reward_equationMIN)
+        lst = [1,2,3,3,10,-50]
+        self.assertEqual(env.reward_func(lst), -50)
+        
+    def testSUM(self):
+        env = BatteryEnv(reward_func=reward_equationSUM)
+        lst = [1,2,3,3,10,-50]
+        self.assertEqual(env.reward_func(lst), -31)
+        
+    def testLAST(self):
+        env = BatteryEnv(reward_func=reward_equationLAST)
+        lst = [1,2,3,3,10,-50]
+        self.assertEqual(env.reward_func(lst), -31)
+        
+    def testCOND(self):
+        env = BatteryEnv(reward_func=reward_equationCOND)
+        lst = [1,2,3,3,10,-50]
+        self.assertEqual(env.reward_func(lst), 0)
         
 if __name__ == '__main__':
     unittest.main()
