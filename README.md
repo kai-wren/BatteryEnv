@@ -36,7 +36,7 @@ sys.path.append('/content/src/batteryenv4gym')
 ```
 
 After this step you could execute below code to get environment created:
-```
+```python
 import gym
 import batteryenv4gym
 
