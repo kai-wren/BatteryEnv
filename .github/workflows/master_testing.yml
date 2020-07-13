@@ -30,4 +30,4 @@ jobs:
         pip install gym
         cd batteryenv4gym
         cd envs
-        python -m unittest -v reward_test
+        python -m unittest -v reward_test generic_test
