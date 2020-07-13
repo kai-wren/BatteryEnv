@@ -97,8 +97,8 @@ class BatteryEnv(gym.Env):
         here we reassign environment variables to default:
         """
         self.charge = 4
-        self.reward_list.clear()
-        self.actual_load_list.clear()
+        self.reward_list = []
+        self.actual_load_list = []
         self.state_idx = 0
     
     
