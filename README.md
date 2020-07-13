@@ -4,14 +4,17 @@ This package contains a custom environment called BatteryEnv for OpenAI Gym pack
 
 ## Installation
 To install BatteryEnv in Google Colab please follow set of simple steps:
+
 1. Download and install BatteryEnv with ```pip```.
 ```
 !python -m pip install -e git+https://github.com/kai-wren/BatteryEnv4Gym.git#egg=batteryenv4gym
 ```
+
 2. Next, execute command to identify location of BatteryEnv.
 ```
 !pip show batteryenv4gym
 ```
+
 Example output:
 ```
 Name: batteryenv4gym
@@ -25,10 +28,22 @@ Location: /content/src/batteryenv4gym
 Requires: gym, numpy, pandas, matplotlib
 Required-by: 
 ```
-3. Execute python code below to 
+
+3. Execute python code below to add location of BatteryEnv package to system path. 
 ```python
 import sys
 sys.path.append('/content/src/batteryenv4gym')
+```
+
+After this step you could execute below code to get environment created:
+```
+import gym
+import batteryenv4gym
+
+def reward_equationMAX(actual_load_list):
+    return max(actual_load_list)
+    
+env = gym.make('batteryenv-v0', reward_func=reward_equationMAX)
 ```
 
 ## Stochastic baseline agent
