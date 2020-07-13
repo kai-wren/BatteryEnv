@@ -63,8 +63,10 @@ class BatteryEnv(gym.Env):
         #calculating our actual load
         if str_action == 'charge' and self.charge < 4:
             obs = self.df['load'][self.state_idx] + 100
+            self.charge += 1
         elif str_action == 'discharge' and self.charge > 0:
             obs = self.df['load'][self.state_idx] - 100
+            self.charge -= 1
         else:
             obs = self.df['load'][self.state_idx]
         
