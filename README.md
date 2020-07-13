@@ -12,7 +12,20 @@ To install BatteryEnv in Google Colab please follow set of simple steps:
 ```
 !pip show batteryenv4gym
 ```
-
+Example output:
+```
+Name: batteryenv4gym
+Version: 0.0.1
+Summary: UNKNOWN
+Home-page: UNKNOWN
+Author: UNKNOWN
+Author-email: UNKNOWN
+License: UNKNOWN
+Location: /content/src/batteryenv4gym
+Requires: gym, numpy, pandas, matplotlib
+Required-by: 
+```
+3. Execute python code below to 
 ```python
 import sys
 sys.path.append('/content/src/batteryenv4gym')
