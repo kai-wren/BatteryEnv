@@ -46,4 +46,35 @@ def reward_equation(actual_load_list):
 env = gym.make('batteryenv-v0', reward_func=reward_equation)
 ```
 
-## Stochastic baseline agent
+## Validating environment with help of stochastic agent
+After installation is over BatteryEnv could be validated by using simple random agent. 
+Sample agent code:
+```python
+import numpy as np
+
+class StochasticAgent():
+
+    def __init__(self, env):
+      self.env = env
+    
+    def execute(self, num_episodes):
+        for episode in range(num_episodes):
+            observation = self.env.reset()
+            t=0
+            while (True):
+                t+=1
+                action = self.env.action_space.sample()
+                observation, reward, done, info = self.env.step(action)
+                if done:
+                    print("Episode finished after {} timesteps".format(t))
+                    arr = np.array(self.env.reward_list)
+                    print("Episode reward %.5f", arr.sum())
+                    break
+```
+After agent class is created it could be executed with simple code below:
+```python
+agent = StochasticAgent(env)
+agent.execute(5)
+```
+
+For your convinience example notebook with all mentioned code could be found in [Google Colab](https://colab.research.google.com/drive/1sj_G0lFS5UtAiUZTsVlEBSe9DNA9iqWT?usp=sharing)
