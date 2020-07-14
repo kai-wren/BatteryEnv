@@ -68,7 +68,7 @@ class StochasticAgent():
                 if done:
                     print("Episode finished after {} timesteps".format(t))
                     arr = np.array(self.env.reward_list)
-                    print("Episode reward %.5f", arr.sum())
+                    print("Episode reward %.5f" %arr.sum())
                     break
 ```
 After agent class is created it could be executed with simple code below:
