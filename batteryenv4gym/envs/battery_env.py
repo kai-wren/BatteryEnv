@@ -106,4 +106,6 @@ class BatteryEnv(gym.Env):
     
     def render(self, mode='human', close=False):
     # Render the environment to the screen
-          print('random_print')
+    # since for our particular task we do not need to render anything for BatteryEnv
+    # we did not implement this method, but it is mandatory for Gym-like custom environments
+          print('render BatteryEnv')
