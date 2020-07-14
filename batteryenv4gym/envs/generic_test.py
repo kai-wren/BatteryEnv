@@ -6,10 +6,13 @@ def reward_equationMAX(actual_load_list):
     return max(actual_load_list)
 
 class GenericTest(unittest.TestCase):
+    
+    # check that environment has correct action space
     def testEnvActionSpace(self):
         env = BatteryEnv(reward_func=reward_equationMAX)
         self.assertIn(env.action_space.sample(), [0, 1, 2])
         
+    # testing that state index properly incremented with steps taken
     def testEnvIndex(self):
         env = BatteryEnv(reward_func=reward_equationMAX)
         self.assertEqual(env.state_idx, 0)
@@ -22,6 +25,7 @@ class GenericTest(unittest.TestCase):
         env.restart_env()
         self.assertEqual(env.state_idx, 0)
     
+    # check that actual load properly calculated with certain steps taken in a row
     def testActualLoad(self):
         env = BatteryEnv(reward_func=reward_equationMAX)
         self.assertEqual(len(env.actual_load_list), 0)

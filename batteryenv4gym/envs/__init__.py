@@ -1,2 +1,1 @@
 from batteryenv4gym.envs.battery_env import BatteryEnv
-from batteryenv4gym.envs.stochastic_agent import StochasticAgent

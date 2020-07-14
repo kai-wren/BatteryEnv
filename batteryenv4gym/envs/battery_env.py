@@ -1,16 +1,17 @@
 import numpy as np
 import pandas as pd
-#import matplotlib.pyplot as plt
 import gym
 from gym import spaces
 import os
 
+# helper function to find data file during execution
 def find(name, path):
     for root, dirs, files in os.walk(path):
         if name in files:
             return os.path.join(root, name)
 
-#df = pd.read_csv('/content/src/batteryenv4gym/batteryenv4gym/envs/data.csv')
+# find and read data used as source for our environment
+# dataframe is inscribed into environment
 df = pd.read_csv(find('data.csv', './'))
 df.rename({'cet_cest_timestamp':'time','SE_load_actual_tso':'load'},axis='columns',inplace=True)
 df['time'] = pd.to_datetime(df['time'],errors='ignore', utc=True)
@@ -19,12 +20,11 @@ df['weekday'] = df['time'].dt.weekday
 class BatteryEnv(gym.Env):
     """Battery optimization environment for OpenAI gym"""
     metadata = {'render.modes': ['human']}
-    # dataframe is inscribed into environment
-
     
     def __init__(self, reward_func):
         super(BatteryEnv, self).__init__()
         
+        # set action space and assign dataframe
         self.dict_actions = {0:'discharge',1:'charge',2:'wait'}
         self.df = df
         self.charge = 4

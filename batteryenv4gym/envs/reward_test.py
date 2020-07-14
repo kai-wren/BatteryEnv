@@ -19,8 +19,9 @@ def reward_equationCOND(actual_load_list):
     else:
         return actual_load_list[-1]
 
+# testing different rewards function to ensure that BatteryEnv call those properly
 class RewardTest(unittest.TestCase):
-        
+    
     def testMAX(self):
         env = BatteryEnv(reward_func=reward_equationMAX)
         lst = [1,2,3,3,10,-50]
