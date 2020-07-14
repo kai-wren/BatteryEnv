@@ -46,4 +46,5 @@ def reward_equation(actual_load_list):
 env = gym.make('batteryenv-v0', reward_func=reward_equation)
 ```
 
-## Stochastic baseline agent
+## Checking environment with stochastic agent
+Example notebook in [Google Colab](https://colab.research.google.com/drive/1sj_G0lFS5UtAiUZTsVlEBSe9DNA9iqWT?usp=sharing)
