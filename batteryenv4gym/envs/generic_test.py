@@ -32,16 +32,16 @@ class GenericTest(unittest.TestCase):
         self.assertEqual(len(env.actual_load_list), 10)
         
         arr = np.array(env.actual_load_list)
-        self.assertEqual(arr.sum(), 158238.65)
+        self.assertEqual(arr.sum(), 158838.65)
         
         arr = np.array(env.actual_load_list)
         self.assertEqual(arr.min(), 15226.48)
         
         arr = np.array(env.actual_load_list)
-        self.assertEqual(arr.max(), 16897.13)
+        self.assertEqual(arr.max(), 16997.13)
         
         arr = np.array(env.actual_load_list)
-        self.assertEqual(arr.mean(), 15823.865)
+        self.assertEqual(arr.mean(), 15883.865)
         
         env.restart_env()
         self.assertEqual(len(env.actual_load_list), 0)
